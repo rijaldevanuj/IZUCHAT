@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I Z U C H A T</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        
+        header {
+            background-color: #007bff;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+        }
+        
+        main {
+            margin: 2rem;
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        h2 {
+            color: #007bff;
+        }
+        
+        form {
+            display: flex;
+            flex-direction: column;
+            max-width: 300px;
+            margin-bottom: 20px;
+        }
+        
+        label {
+            margin-bottom: 0.5rem;
+        }
+        
+        input, button {
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        button {
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        button:hover {
+            background-color: #0056b3;
+        }
+        
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        li {
+            margin-bottom: 1rem;
+            background-color: #e9e9e9;
+            padding: 0.5rem;
+            border-radius: 5px;
+        }
+        
+        footer {
+            background-color: #007bff;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>I Z U C H A T</h1>
+    </header>
+
+    <main>
+        <h2>Add Tasks</h2>
+        <form>
+            <label for="task">Task:</label>
+            <input type="text" id="task" name="task" required>
+            <label for="dueDate">Due Date:</label>
+            <input type="date" id="dueDate" name="dueDate" required>
+            <button type="button" onclick="addTask()">Add Task</button>
+        </form>
+
+        <h2>Task List</h2>
+        <ul id="taskList">
+            <!-- Tasks will be added here dynamically -->
+        </ul>
+
+        <h2>Class Schedule</h2>
+        <ul id="classSchedule">
+            <!-- Class schedule will be added here dynamically -->
+        </ul>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Izuchat Corporation pvt ltd.</p>
+    </footer>
+
+    <script>
+        function addTask() {
+            const task = document.getElementById('task').value;
+            const dueDate = document.getElementById('dueDate').value;
+
+            const taskList = document.getElementById('taskList');
+            const listItem = document.createElement('li');
+            listItem.textContent = `${task} - Due: ${dueDate}`;
+
+            // Add delete button
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Complete';
+            deleteButton.onclick = function () {
+                taskList.removeChild(listItem);
+            };
+
+            listItem.appendChild(deleteButton);
+            taskList.appendChild(listItem);
+        }
+    </script>
+</body>
+
+</html>
